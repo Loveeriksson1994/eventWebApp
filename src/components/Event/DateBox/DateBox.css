@@ -1,0 +1,10 @@
+.sup-eventPuff__dateBox {
+    background-color: rgb(255 255 255 / 95%);
+    border-radius: 3px;
+    width: calc((100%)/2 - 2rem);
+    padding: 0.2rem;
+    transform: translateY(-2.5rem);
+    margin-left: 0.5rem;
+    text-align: center;
+    font-family: Open sans;
+ }
