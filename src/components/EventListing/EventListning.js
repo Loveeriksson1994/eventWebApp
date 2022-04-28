@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Eventlistning.css';
-import sortedList from '../Logik/SortedList';
+import sortedList from '../../Logik/SortedList';
 import Event from '../Event/Event.js';
 
 const list = sortedList;

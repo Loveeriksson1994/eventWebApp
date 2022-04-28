@@ -38,14 +38,25 @@ function getCategory(node) {
    });
    return categoryArray;
 }
+
+function eventIsActive(node) {
+   let endDate = propertyUtil.getCalendar(node, "endDate"),
+     today = new Date(),
+     currentDateISO = dateUtil.getDateAsISO8601String(today),
+     currentDateFormated = currentDateISO.split("T")[0],
+     endDateFormated = dateUtil.getCalendarAsString("yyyy-MM-dd", endDate);
+   
+   if (endDateFormated >= currentDateFormated) {
+     return true;
+   } else {
+     return false;
+   }
+}
  
 function createObject(node) {
    let startDate = propertyUtil.getCalendar(node, 'startDate'),
-      endDate = propertyUtil.getCalendar(node, 'endDate'),
-      today = new Date(),
-      currentDateISO = dateUtil.getDateAsISO8601String(today),
-       currentDateFormated = currentDateISO.split('T')[0];
- 
+      endDate = propertyUtil.getCalendar(node, 'endDate');
+      if(eventIsActive(node)){
    let object = {
       startDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", startDate),
       endDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", endDate),
@@ -56,12 +67,8 @@ function createObject(node) {
       picture: getPicture(node),
       url: properties.get(node, 'URL')
    };
-// Om evenamangets slutdatum har passerat
- /*  if (object.endDateForSort >= currentDateFormated)
-      eventList.push(object);
-      */
-      // ta bort detta för att ta bort checken för passerat datum
    eventList.push(object);
+   }
 }
  
 createObject(first);
