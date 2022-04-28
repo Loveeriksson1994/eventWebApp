@@ -1,20 +1,10 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import styles from './App.scss';
+import * as React from "react";
+import EventPuff from "../Event/EventPuff/EventPuff";
 
-const App = ({ message, name }) => {
-  return (
-    <div className={styles.container}>
-      <p className={styles.text}>
-        {message} {name}
-      </p>
-    </div>
-  );
+
+const App = () => {
+  return <EventPuff></EventPuff>;
 };
 
-App.propTypes = {
-  message: PropTypes.string,
-  name: PropTypes.string,
-};
 
 export default App;

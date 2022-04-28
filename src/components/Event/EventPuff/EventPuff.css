@@ -1,0 +1,19 @@
+.sup-eventPuff {
+    background-color: white;
+  /*  width: calc((100%)/4 - 1.9rem); */
+    margin: 0.5rem;
+    min-height: 17.6rem;
+    border-radius: 0 0 15px 15px;
+    border-style: solid;
+    border-width: 0.1px;
+    border-color: #A5A5A5;
+    /* margin-bottom: 3.75rem; */
+  }
+
+  .sup-eventContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    row-gap: 3.75rem;
+    column-gap: 2.5rem;
+  }
