@@ -8,9 +8,7 @@ import PictureBox from "../PictureBox/PictureBox.js";
 const list = sorttedDate;
 //  <DateBox start={item.start} end={item.end}></DateBox>
 
-
 const EventPuff = () => {
-
   return (
     <div className="sup-eventContainer">
       {list.map((item) => (
