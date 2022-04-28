@@ -1,6 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import styles from './App.scss';
+import EventListing from '../EventListing/EventListning.js';
 
 const App = ({ message, name }) => {
   return (
@@ -8,6 +9,7 @@ const App = ({ message, name }) => {
       <p className={styles.text}>
         {message} {name}
       </p>
+      <EventListing></EventListing>
     </div>
   );
 };
