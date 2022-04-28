@@ -115,7 +115,7 @@ const App = () => {
                         <time> {event.start} </time>
                      )
                   }
-        
+                  
                   else {
                      return (
                         <time> {event.start} - {event.end} </time>
@@ -132,12 +132,16 @@ const App = () => {
                   {event.category.map(cat => (
                      <span>
                      {(() => {
-                        if (event.category.length == 1) {
-                           return (
-                              <span>{cat}</span>
-                           )
+                        // if (event.category.length == 1) {
+                        //    return (
+                        //       <span>{cat}</span>
+                        //    )
+                        // }
+
+                        if (event.category.indexOf(cat) == event.category.length - 1) {
+                           return <span>{cat}</span>
                         }
-              
+
                         else {
                            return (
                               <span>{cat} • </span>
