@@ -3,7 +3,7 @@ import EventPuff from "../Event/EventPuff/EventPuff";
 
 
 const App = () => {
-  return <EventPuff></EventPuff>;
+  return <EventPuff ></EventPuff>;
 };
 
 

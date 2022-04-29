@@ -6,20 +6,15 @@ import dateUtil from "@sitevision/api/server/DateUtil";
 import properties from "@sitevision/api/server/Properties";
 import resourceLocatorUtil from "@sitevision/api/server/ResourceLocatorUtil";
 import imageRenderer from "@sitevision/api/server/ImageRenderer";
-import imageScaler from "@sitevision/api/server/ImageScaler";
-import pageUtil from "@sitevision/api/server/Pageutil";
 import utils from "@sitevision/api/server/Utils";
-import React from "react";
 
 let currentPage = portletContextUtil.getCurrentPage(),
   eventArchive = nodeTreeUtil.getNode(currentPage, "../Evenemang"),
   eventList = [],
   sorttedDate = [],
   imageScaler1 = utils.getImageScaler(308, 188);
-console.log(currentPage);
-//const events = nodeIteratorUtil.getMenuItems(eventArchive);
-const events = eventArchive.getNodes();
 
+const events = eventArchive.getNodes();
 let first = nodeIteratorUtil.findFirst(events, null);
 
 function getPicture(node) {

@@ -1,5 +1,5 @@
 import React from "react";
-import sorttedDate from "../../App/Logik/Logik.js";
+import sorttedDate from "../../App/Utils/EventHelper.js";
 import TitleBox from "../TitleBox/TitleBox.js";
 import DateBox from "../DateBox/DateBox";
 import CategoryBox from "../CategoryBox/CategoryBox";
