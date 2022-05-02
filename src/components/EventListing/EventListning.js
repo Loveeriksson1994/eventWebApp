@@ -1,12 +1,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Eventlistning.css';
-import sortedList from '../../Logik/SortedList';
 import Event from '../Event/Event.js';
 
-const list = sortedList;
-
-const Eventlisting = () => {
+const Eventlisting = ({list}) => {
     return (
     <div className={styles.supEventContainer}>
         {list.map(event =>(
@@ -17,7 +14,9 @@ const Eventlisting = () => {
 };
 
  Eventlisting.propTypes = {
-   Eventlisting: PropTypes.any,
+   list: PropTypes.any,
  };
+
+ //Undersök denna och App.js :) Lycka till..
 
 export default Eventlisting;

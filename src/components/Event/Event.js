@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import styles from './Event.css'
 import utils from '@sitevision/api/server/Utils';
 import imageRenderer from '@sitevision/api/server/ImageRenderer';
+import resourceLocatorUtil from '@sitevision/api/server/ResourceLocatorUtil';
 
 const Event = ({event}) => {
+
+    let picture = resourceLocatorUtil.getNodeByIdentifier(event.picture);
+
     const imageScaler = utils.getImageScaler(308, 188);
     imageRenderer.setImageScaler(imageScaler),
     imageRenderer.clearSourceSetMode(),
     imageRenderer.forceUseImageScaler(),
-    imageRenderer.setImage(event.picture)
+    imageRenderer.setImage(picture)
 
     let date;
     if(event.startDate === event.endDate){
@@ -67,7 +71,7 @@ const Event = ({event}) => {
   };
 
   Event.propTypes = {
-    Event: PropTypes.string,
+    event: PropTypes.any,
   };
  
  export default Event;
