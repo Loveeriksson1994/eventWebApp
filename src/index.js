@@ -2,10 +2,7 @@ import * as React from 'react';
 import { renderToString } from 'react-dom/server';
 import router from '@sitevision/api/common/router';
 import App from './components/App';
-import { createEventList } from './Utils/SortedList_v2';
-import logUtil from '@sitevision/api/server/LogUtil';
-
-//let list = JSON.stringify(createEventList());
+import { createEventList } from './Utils/EventHelper.js';
 
 let list = [];
 createEventList(list);
