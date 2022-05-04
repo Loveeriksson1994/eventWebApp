@@ -45,34 +45,34 @@ function eventIsActive(node) {
    }
 }
 
-function createObject(node, list) {
-   let startDate = propertyUtil.getCalendar(node, 'startDate'),
-      endDate = propertyUtil.getCalendar(node, 'endDate');
-   if (eventIsActive(node)) {
-      let object = {
-         startDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", startDate),
-         endDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", endDate),
-         startDate: formatStartDate(node),
-         endDate: formatEndDate(node),
-         title: propertyUtil.getString(node, 'SV.Title'),
-         category: getCategory(node),
-         picture: getPicture(node),
-         url: properties.get(node, 'URL')
-      };
-      list.push(object);
-   }
-   logUtil.info(node);
-}
+// function createObject(node, list) {
+//    let startDate = propertyUtil.getCalendar(node, 'startDate'),
+//       endDate = propertyUtil.getCalendar(node, 'endDate');
+//    if (eventIsActive(node)) {
+//       let object = {
+//          startDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", startDate),
+//          endDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", endDate),
+//          startDate: formatStartDate(node),
+//          endDate: formatEndDate(node),
+//          title: propertyUtil.getString(node, 'SV.Title'),
+//          category: getCategory(node),
+//          picture: getPicture(node),
+//          url: properties.get(node, 'URL')
+//       };
+//       list.push(object);
+//    }
+//    logUtil.info(node);
+// }
 
 /**
  * Sätter den nuvarande listan till currentList och sedan lägger ni till värden i den istället
  * När ni sedan lagt till alla värden så retunerar ni currentList som är den aktuella listan 
  * med det nya tillagda värdet.
  */
-function createObjectExempel(node, list) {
+function createObject(node, list) {
    let startDate = propertyUtil.getCalendar(node, 'startDate'),
-      endDate = propertyUtil.getCalendar(node, 'endDate')
-   currentList = list;
+      endDate = propertyUtil.getCalendar(node, 'endDate'),
+      currentList = list;
    if (eventIsActive(node)) {
       let object = {
          startDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", startDate),
@@ -90,15 +90,16 @@ function createObjectExempel(node, list) {
 }
 
 
-function byDate(a, b) {
+function sortByDate(a, b) {
    return new Date(a.startDateForSort).valueOf() - new Date(b.startDateForSort).valueOf();
 }
 
-const createEventList = (list) => {
+const createEventList = () => {
    const currentPage = portletContextUtil.getCurrentPage(),
       eventArchive = nodeTreeUtil.getNode(currentPage, '../Evenemang'),
       events = eventArchive.getNodes(),
       first = nodeIteratorUtil.findFirst(events, null);
+   let list = [];
    logUtil.info(events);
 
    /**
@@ -131,10 +132,12 @@ const createEventList = (list) => {
          list = createObject(event, list);
          });
     */
-   events.forEachRemaining((event) => createObject(event, list));
+   events.forEachRemaining((event) => {
+      list = createObject(event, list)
+   });
 
-   list.sort(byDate);
-
+   return list.sort(sortByDate);
+   //return sortedList;
    /**
     * return "vilket object ni sedan ska retunera till eran applikation"
     */
