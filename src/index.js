@@ -4,14 +4,9 @@ import router from '@sitevision/api/common/router';
 import App from './components/App';
 import { createEventList } from './Utils/EventHelper.js';
 
-/**
- * Här borde ni skriva något enligt följande istället
- * list = createEventList(list) när ni gjort att funtkionen retunerat ett värde.
- */
 let list = createEventList(list);
 
-router.get('/', (req, res) => {
-  
+router.get('/', (req, res) => { 
   res.agnosticRender(renderToString(<App list={list}/>), {
     list,
   });
