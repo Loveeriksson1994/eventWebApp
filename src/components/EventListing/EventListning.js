@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './Eventlistning.css';
 import Event from '../Event/Event.js';
 
+
 const Eventlisting = ({list}) => {
+  let categoryList = categoryList();
     return (
     <div className={styles.supEventContainer}>
         {list.map(event =>(

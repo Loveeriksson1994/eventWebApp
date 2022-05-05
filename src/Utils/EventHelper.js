@@ -75,9 +75,12 @@ const createEventList = (list) => {
         first = nodeIteratorUtil.findFirst(events, null);
         logUtil.info(events);
     
-    createObject(first, list);
-    events.forEachRemaining((event) => createObject(event, list));
+    //createObject(first, list);
+    //events.forEachRemaining((event) => createObject(event, list));
 
+    events.forEach(event => {
+       createObject(event, list)
+    });
     list.sort(byDate);
 }
 
