@@ -4,7 +4,10 @@ import styles from './Eventlistning.css';
 import Event from '../Event/Event.js';
 
 const Eventlisting = ({list}) => {
-    return (
+  
+  //lägg till state som props - kanske görs i categoryList får se. kolla länkarna
+  //parent sätter statet och passar det till childs
+  return (
     <div className={styles.supEventContainer}>
         {list.map(event =>(
             <Event event={event}></Event>
@@ -16,7 +19,5 @@ const Eventlisting = ({list}) => {
  Eventlisting.propTypes = {
    list: PropTypes.any,
  };
-
- //Undersök denna och App.js :) Lycka till..
 
 export default Eventlisting;

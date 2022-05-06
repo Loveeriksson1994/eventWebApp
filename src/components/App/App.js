@@ -15,6 +15,19 @@ const App = ({list}) => {
     // logUtil.info(element.picture);
     // logUtil.info(element.url);
 //});
+  function sortList() {
+    let sortedCatList = [];
+    list.forEach(element => {
+      if(element.category === 'Utställning') {
+        sortedCatList.push(element);
+      }
+    });
+    return sortedCatList;
+  }
+  function updateList() {
+    list = sortList();
+    //EventListing.setState(list);
+  }
   return (
     <div>
       {/* {list.map(event =>(
@@ -25,6 +38,7 @@ const App = ({list}) => {
             <p>hej :)</p>
         )} */}
       <EventListing list={list}></EventListing>
+      <button onClick={updateList()}>Klicka här va fan</button>
     </div>
   );
 };
