@@ -59,7 +59,9 @@ function createObject(node, list) {
       };
       currentList.push(object);
    }
-   return currentList;
+   if (currentList) {
+      return currentList;
+   }
 }
 
 function sortByDate(a, b) {
