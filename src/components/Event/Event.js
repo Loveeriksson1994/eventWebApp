@@ -1,77 +1,80 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Event.css'
+import styles from './Event.scss'
 import utils from '@sitevision/api/server/Utils';
 import imageRenderer from '@sitevision/api/server/ImageRenderer';
 import resourceLocatorUtil from '@sitevision/api/server/ResourceLocatorUtil';
 
-const Event = ({event}) => {
+const Event = ({ event }) => {
 
     let picture = resourceLocatorUtil.getNodeByIdentifier(event.picture);
-
     const imageScaler = utils.getImageScaler(308, 188);
     imageRenderer.setImageScaler(imageScaler),
-    imageRenderer.clearSourceSetMode(),
-    imageRenderer.forceUseImageScaler(),
-    imageRenderer.setImage(picture)
+        imageRenderer.clearSourceSetMode(),
+        imageRenderer.forceUseImageScaler(),
+        imageRenderer.setImage(picture)
 
-    let date;
-    if(event.startDate === event.endDate){
-        date = event.startDate
+    function displayPicture() {
+        let picture = resourceLocatorUtil.getNodeByIdentifier(event.picture);
+        const imageScaler = utils.getImageScaler(308, 188);
+        imageRenderer.setImageScaler(imageScaler),
+            imageRenderer.clearSourceSetMode(),
+            imageRenderer.forceUseImageScaler(),
+            imageRenderer.setImage(picture);
+        return imageRenderer.render();
     }
-    else {
-        date = event.startDate + ' - ' + event.endDate
+
+    function displayDate() {
+        let date;
+        if (event.startDate === event.endDate) {
+            date = event.startDate
+        }
+        else {
+            date = event.startDate + ' - ' + event.endDate
+        }
+        return date;
     }
 
-    let samling = event.category,
-    categoryString = "",
-    i = 0,
-    lastCategory = samling.length - 1;
-
-    samling.map(category => {
-        if(i === lastCategory) {
-            return categoryString += category
-        }
-        else{
-            i++
-            return categoryString += category + " • "
-        }
-    })
+    function displayCategory() {
+        let categories = event.category,
+            categoryString = "",
+            i = 0,
+            lastCategory = categories.length - 1;
+        categories.map(category => {
+            if (i === lastCategory) {
+                categoryString += category
+            }
+            else {
+                i++
+                categoryString += category + " • "
+            }
+        })
+        return categoryString;
+    }
 
     return (
-        
-           <div className={styles.supEventPuff}>
-                <a href={event.url}>
-                <div dangerouslySetInnerHTML={{__html: imageRenderer.render()}} />
-                    <div className={styles.supEventPuff__dateBox}>
-                        <time>
-                            {date}
-                        </time>
-                    </div>
-                    <div className={styles.supEventPuff__titleBox}>
-                        {event.title}
-                    </div>
-                    <div className={styles.supEventPuff__categoryBox}>
-                            {/* {samling.map(category => {
-                                if(i === lastCategory) {
-                                    return <span>{category}</span>
-                                }
-                                else{
-                                    return
-                                    <div>
-                                    <span>{category}</span><span className={styles.supCatDot}></span>
-                                    </div>
-                                }
-                            })} */}
-                            {categoryString}
-                    </div>
-                </a>
-            </div>
-            );
-  };
 
-  Event.propTypes = {
-    event: PropTypes.any,
-  };
- 
- export default Event;
+        <div className={styles.supEventPuff}>
+            <a href={event.url}>
+                <div dangerouslySetInnerHTML={{ __html: displayPicture() }} />
+                <div className={styles.supEventPuff__dateBox}>
+                    <time>
+                        {displayDate()}
+                    </time>
+                </div>
+                <div className={styles.supEventPuff__titleBox}>
+                    {event.title}
+                </div>
+                <div className={styles.supEventPuff__categoryBox}>
+                    {displayCategory()}
+                </div>
+            </a>
+        </div>
+    );
+};
+
+Event.propTypes = {
+    event: PropTypes.object,
+};
+
+export default Event;

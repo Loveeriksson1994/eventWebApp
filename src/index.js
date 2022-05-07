@@ -6,8 +6,8 @@ import { createEventList } from './Utils/EventHelper.js';
 
 let list = createEventList(list);
 
-router.get('/', (req, res) => { 
-  res.agnosticRender(renderToString(<App list={list}/>), {
+router.get('/', (req, res) => {
+  res.agnosticRender(renderToString(<App list={list} />), {
     list,
   });
 });

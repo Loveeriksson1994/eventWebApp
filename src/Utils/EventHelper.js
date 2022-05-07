@@ -46,7 +46,7 @@ function createObject(node, list) {
    let currentList = list;
    if (eventIsActive(node)) {
       let startDate = propertyUtil.getCalendar(node, 'startDate'),
-      endDate = propertyUtil.getCalendar(node, 'endDate');
+         endDate = propertyUtil.getCalendar(node, 'endDate');
       let object = {
          startDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", startDate),
          endDateForSort: dateUtil.getCalendarAsString("yyyy-MM-dd", endDate),
