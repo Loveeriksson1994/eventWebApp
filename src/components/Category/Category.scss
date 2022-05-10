@@ -1,0 +1,28 @@
+.supCategoriesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.supCategoryContainer {
+    margin: 1rem;
+    padding: 0.5rem;
+    border-radius: 15px 15px 15px 15px;
+    border-style: solid;
+    border-width: 0.1px;
+    border-color: #A5A5A5;
+    user-select: none;
+}
+
+.supCategoryContainerNotClicked {
+    background-color: #ffffff;
+}
+
+.supCategoryContainer:hover {
+    cursor: pointer;
+}
+
+.supCategoryContainerClicked {
+    background-color: pink;
+}
