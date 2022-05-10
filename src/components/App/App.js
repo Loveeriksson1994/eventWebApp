@@ -1,4 +1,6 @@
 import * as React from 'react';
+import leafletCSS from '..Leaflet/leaflet.css';
+import leafletJs from '..Leaflet/leaflet.js';
 // import PropTypes from 'prop-types';
 // import styles from './App.scss';
 
