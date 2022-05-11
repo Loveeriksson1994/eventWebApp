@@ -7,21 +7,16 @@ import resourceLocatorUtil from '@sitevision/api/server/ResourceLocatorUtil';
 
 const Event = ({ event }) => {
 
-    let picture = resourceLocatorUtil.getNodeByIdentifier(event.picture);
-    const imageScaler = utils.getImageScaler(308, 188);
-    imageRenderer.setImageScaler(imageScaler),
-        imageRenderer.clearSourceSetMode(),
-        imageRenderer.forceUseImageScaler(),
-        imageRenderer.setImage(picture)
-
     function displayPicture() {
         let picture = resourceLocatorUtil.getNodeByIdentifier(event.picture);
-        const imageScaler = utils.getImageScaler(308, 188);
-        imageRenderer.setImageScaler(imageScaler),
-            imageRenderer.clearSourceSetMode(),
-            imageRenderer.forceUseImageScaler(),
-            imageRenderer.setImage(picture);
-        return imageRenderer.render();
+        if (picture) {
+            const imageScaler = utils.getImageScaler(308, 188);
+            imageRenderer.setImageScaler(imageScaler),
+                imageRenderer.clearSourceSetMode(),
+                imageRenderer.forceUseImageScaler(),
+                imageRenderer.setImage(picture);
+            return imageRenderer.render();
+        }
     }
 
     function displayDate() {
