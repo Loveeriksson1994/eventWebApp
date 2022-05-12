@@ -2,33 +2,39 @@ a:link {
     text-decoration: none;
     margin: 0;
     padding: 0;
- }
- 
- p {
+}
+
+p {
     font-family: Open sans, sans-serif;
- }
- 
- img {
+}
+
+img {
     width: 100%;
     min-height: 188px;
     max-height: 188px;
     min-width: 308px;
     object-fit: cover;
- }
- 
- .supEventPuff {
+}
+
+.supEventContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    row-gap: 3.75rem;
+    column-gap: 2.5rem;
+}
+
+.supEventPuff {
     background-color: white;
-  /*  width: calc((100%)/4 - 1.9rem); */
     margin: 0.5rem;
     min-height: 17.6rem;
     border-radius: 0 0 15px 15px;
     border-style: solid;
     border-width: 0.1px;
     border-color: #A5A5A5;
-    /* margin-bottom: 3.75rem; */
- }
- 
- .supEventPuff__dateBox {
+}
+
+.supEventPuff__dateBox {
     background-color: rgb(255 255 255 / 95%);
     border-radius: 3px;
     width: calc((100%)/2 - 2rem);
@@ -37,46 +43,54 @@ a:link {
     margin-left: 0.5rem;
     text-align: center;
     font-family: Open sans, sans-serif;
- }
- 
- .supEventPuff__titleBox {
+}
+
+.supEventPuff__titleBox {
     padding-left: 0.5rem;
     transform: translateY(-1.5rem);
     font-family: Open sans, sans-serif;
     font-size: 1.25rem;
     font-weight: bold;
- }
- 
- .supEventPuff__categoryBox {
+}
+
+.supEventPuff__categoryBox {
     padding-left: 0.5rem;
     font-family: Open sans, sans-serif;
     font-size: 1rem;
     transform: translateY(-1rem);
     text-transform: uppercase;
- }
- 
- .supCatDot {
+}
+
+.supCatDot {
     height: 0.25em;
     width: 0.25em;
     background-color: #333333;
     border-radius: 50%;
     display: inline-block;
     margin: 0 0.2em 0.16em 0.2em;
- }
- 
- 
- 
- @media (max-width: 1450px) {    
+}
+
+
+
+@media (max-width: 1450px) {
+    .supEventContainer {
+        grid-template-columns: auto auto auto;
+    }
+
     .supEventPuff {
         margin: 0;
         max-width: 19.25rem;
         min-width: 19.25rem;
     }
- }
- 
- 
- 
- @media (max-width: 768px) {
+}
+
+@media (max-width: 1050px) {
+    .supEventContainer {
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 768px) {
     img {
         max-height: 368px;
         min-height: 368px;
@@ -85,94 +99,101 @@ a:link {
     time {
         font-size: 1.563rem;
     }
-    
+
+    .supEventContainer {
+        display: block;
+        max-width: 95%;
+        margin: auto;
+    }
+
     .supEventPuff {
         max-width: none;
         min-width: unset;
         margin-bottom: 2rem !important;
     }
-        
+
     .supEventPuff__dateBox {
         padding: 0.5rem;
         transform: translateY(-4.2rem);
         width: calc((100%)/2 - 4rem);
-        }
-        
-    .supEventPuff__titleBox{
+    }
+
+    .supEventPuff__titleBox {
         transform: translateY(-2.85rem);
         font-size: 1.953rem;
     }
-        
-    .supEventPuff__categoryBox{
+
+    .supEventPuff__categoryBox {
         transform: translateY(-2.35rem);
         font-size: 1.25rem;
         text-transform: uppercase;
     }
 }
- 
- 
- @media (max-width: 665px) { 
+
+
+@media (max-width: 665px) {
     img {
         max-height: 250px;
         min-height: 250px;
         min-width: unset;
     }
-    
+
     time {
         font-size: 1.25rem;
     }
-        
+
     .supEventPuff {
         max-width: 90%;
         min-width: 90%;
         margin: auto;
     }
 
-    .supEventPuff__dateBox{
+    .supEventPuff__dateBox {
         padding: 0.5rem;
         transform: translateY(-3.7rem);
         width: calc((100%)/2 - 1rem);
-        }
+    }
 
-    .supEventPuff__titleBox{
+    .supEventPuff__titleBox {
         transform: translateY(-2rem);
         font-size: 1.563rem;
     }
-    .supEventPuff__categoryBox{
+
+    .supEventPuff__categoryBox {
         transform: translateY(-1.5rem);
         font-size: 1rem;
         text-transform: uppercase;
     }
- }
- 
- 
- @media (max-width: 420px) { 
+}
+
+
+@media (max-width: 420px) {
     img {
         max-height: 188px;
         min-height: 188px;
     }
-        
+
     time {
         font-size: 1rem;
     }
-    
-    .supEventPuff{
+
+    .supEventPuff {
         max-width: 100%;
         min-width: 100%;
     }
-    
-    .supEventPuff__dateBox{
+
+    .supEventPuff__dateBox {
         padding: 0.5rem;
         transform: translateY(-3.25rem);
         width: calc((100%)/2 - 1rem);
     }
-        
-    .supEventPuff__titleBox{
+
+    .supEventPuff__titleBox {
         transform: translateY(-2rem);
         font-size: 1.25rem;
     }
-        
-    .supEventPuff__categoryBox{
+
+    .supEventPuff__categoryBox {
         transform: translateY(-1.5rem);
         font-size: 0.8rem;
         text-transform: uppercase;
